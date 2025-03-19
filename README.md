@@ -1,9 +1,5 @@
 This is a bash script to build freedreno/turnip for Android 
 
-### Scheduled Releases
-- Automated releases at 06:00 UTC on the 1st and 15th of each month.
-
-
 ### To Build Locally
 - Obtain the script [turnip_builder.sh](https://raw.githubusercontent.com/ilhan-athn7/freedreno_turnip-CI/main/turnip_builder.sh) on your linux environment. (visit the link and use ```CTRL + S``` keys)
 - Execute script on linux terminal ```bash ./turnip_builder.sh```
