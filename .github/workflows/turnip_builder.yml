@@ -24,8 +24,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Upload meson and ninja logs for debugging
-        path: |
-          turnip_workdir/ninja_log
+        path:  |
           turnip_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
 
     - name: Release "turnip"
@@ -35,4 +34,4 @@ jobs:
         tag_name: github_run
         name: Weekly Action Release
         files: |
-           turnip_workdir/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so 
+           turnip_workdir/mesa-25.0.1/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so 
