@@ -10,7 +10,7 @@ magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r28"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip"
+mesasrc="https://archive.mesa3d.org/mesa-25.0.1.tar.xz"
 
 clear
 
@@ -55,10 +55,10 @@ prepare_workdir(){
 		unzip "$ndkver"-linux.zip &> /dev/null
 
 	echo "Downloading mesa source ..." $'\n'
-		curl "$mesasrc" --output mesa-main.zip &> /dev/null
+		curl "$mesasrc" --output mesa.tar.xz &> /dev/null
 	echo "Exracting mesa source ..." $'\n'
-		unzip mesa-main.zip &> /dev/null
-		cd mesa-main
+		tar -xf mesa.tar.xz &> /dev/null
+		cd mesa-25.0.1
 }
 
 
