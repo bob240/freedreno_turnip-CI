@@ -57,7 +57,7 @@ prepare_workdir(){
 	echo "Downloading mesa source ..." $'\n'
 		curl "$mesasrc" --output mesa.tar.xz &> /dev/null
 	echo "Exracting mesa source ..." $'\n'
-		tar -xf mesa.tar.xz &> /dev/null
+		tar -xf mesa.tar.xz
 		cd mesa-25.0.1
 }
 
@@ -124,7 +124,7 @@ EOF
 			-Dstrip=true &> "$workdir/meson_log"
 
 	echo "Compiling build files ..." $'\n'
-		ninja -C build-android-aarch64 &> "$workdir/ninja_log"
+		ninja -C build-android-aarch64
 
 	if ! [ -a "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so ]; then
 		echo -e "$red Build failed! $nocolor" && exit 1
