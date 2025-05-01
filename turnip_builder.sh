@@ -10,7 +10,7 @@ magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r28"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://archive.mesa3d.org/mesa-25.1.0-rc1.tar.xz"
+mesasrc="https://archive.mesa3d.org/mesa-25.0.5.tar.xz"
 
 clear
 
@@ -58,7 +58,7 @@ prepare_workdir(){
 		curl "$mesasrc" --output mesa.tar.xz &> /dev/null
 	echo "Exracting mesa source ..." $'\n'
 		tar -xf mesa.tar.xz
-		cd mesa-25.1.0-rc1
+		cd mesa-25.0.5
 }
 
 
