@@ -20,7 +20,7 @@ run_all(){
 	check_deps
 	prepare_workdir
 	build_lib_for_android
-	port_lib_for_magisk
+	
 	port_lib_for_adrenotools
 }
 
