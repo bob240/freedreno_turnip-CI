@@ -10,7 +10,7 @@ magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r28b"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip"
+mesasrc="https://github.com/bob240/mesa-mirror"
 
 clear
 
@@ -54,10 +54,7 @@ prepare_workdir(){
 	echo "Exracting android-ndk ..." $'\n'
 		unzip "$ndkver"-linux.zip &> /dev/null
 
-	echo "Downloading mesa source ..." $'\n'
-		curl "$mesasrc" --output mesa-main.zip &> /dev/null
-	echo "Exracting mesa source ..." $'\n'
-		unzip mesa-main.zip &> /dev/null
+	git clone https://github.com/bob240/mesa-mirror.git ./mesa-main
 		cd mesa-main
 }
 
