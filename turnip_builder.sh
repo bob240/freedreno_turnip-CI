@@ -9,7 +9,7 @@ workdir="$(pwd)/turnip_workdir"
 magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r29-beta2"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-sdkver="34"
+sdkver="35"
 mesasrc="https://github.com/bob240/mesa-mirror"
 
 clear
@@ -192,14 +192,15 @@ port_lib_for_adrenotools(){
 	echo "Using patchelf to match soname" $'\n'
 		cp "$workdir"/mesa-main/build-android-aarch64/src/freedreno/vulkan/libvulkan_freedreno.so "$workdir"/$libname
 		cd "$workdir"
+                $ndk/aarch64-linux-android-strip $libname
 		patchelf --set-soname $libname $libname
 	echo "Preparing meta.json" $'\n'
 		cat <<EOF > "meta.json"
 {
 	"schemaVersion": 1,
-	"name": "freedreno_turnip-CI",
+	"name": "Freedreno",
 	"description": "$(date)",
-	"author": "MrMiy4mo, kethen",
+	"author": "test",
 	"packageVersion": "1",
 	"vendor": "Mesa",
 	"driverVersion": "$(cat $workdir/mesa-main/VERSION)",
