@@ -4,13 +4,13 @@
 green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
-deps="meson ninja patchelf unzip curl pip flex bison zip glslang glslangValidator"
+deps="meson ninja patchelf unzip curl pip flex bison zip glslang glslangValidator git"
 workdir="$(pwd)/turnip_workdir"
 magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r28c"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip"
+mesasrc="https://github.com/bob240/mesa-mirror"
 
 clear
 
@@ -20,7 +20,7 @@ run_all(){
 	check_deps
 	prepare_workdir
 	build_lib_for_android
-	port_lib_for_magisk
+	#port_lib_for_magisk
 	port_lib_for_adrenotools
 }
 
@@ -55,9 +55,7 @@ prepare_workdir(){
 		unzip "$ndkver"-linux.zip &> /dev/null
 
 	echo "Downloading mesa source ..." $'\n'
-		curl "$mesasrc" --output mesa-main.zip &> /dev/null
-	echo "Exracting mesa source ..." $'\n'
-		unzip mesa-main.zip &> /dev/null
+	git clone $mesasrc ./mesa-main
 		cd mesa-main
 }
 
@@ -200,9 +198,9 @@ port_lib_for_adrenotools(){
 		cat <<EOF > "meta.json"
 {
 	"schemaVersion": 1,
-	"name": "freedreno_turnip-CI",
+	"name": "Turnip",
 	"description": "$(date)",
-	"author": "MrMiy4mo, kethen",
+	"author": "mesa",
 	"packageVersion": "1",
 	"vendor": "Mesa",
 	"driverVersion": "$(cat $workdir/mesa-main/VERSION)",
